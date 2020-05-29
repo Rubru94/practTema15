@@ -5,7 +5,7 @@ node {
         sh "cd . ; '${mvnHome}/bin/mvn' clean package"
     }
     stage("Post"){
-        archiveArtifacts '**/practTema15/target/*.jar'
-        junit '**/practTema15/target/surefire-reports/*.xml'
+        archiveArtifacts '**/target/*.jar'
+        junit '**/target/surefire-reports/*.xml'
     }
 }
