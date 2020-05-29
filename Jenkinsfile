@@ -6,6 +6,6 @@ node {
     }
     stage("Post"){
         archiveArtifacts '**/practTema15/target/*.jar'
-        junit '**/practTema15/target/surefire-reports/*.xml'
+        junit '**/target/surefire-reports/*.xml'
     }
 }
