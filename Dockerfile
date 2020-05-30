@@ -11,4 +11,4 @@ FROM openjdk:8-jre
 COPY --from=builder /code/target/*.jar /usr/app/
 WORKDIR /usr/app
 
-CMD ["java", "-jar", "practTema15-0.1.0-SNAPSHOT.jar"]
+CMD ["exec", "java", "-jar", "practTema15-0.1.0-SNAPSHOT.jar"]
