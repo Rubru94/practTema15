@@ -15,6 +15,6 @@ node {
     stage("Post"){
         archiveArtifacts '**/target/*.jar'
         junit '**/target/surefire-reports/*.xml'
-        sh "kill \$(cat target/pid)"
+        sh "kill \$(cat ./target/pid)"
     }
 }
