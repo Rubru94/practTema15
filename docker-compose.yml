@@ -1,0 +1,24 @@
+version: "3"
+services:
+
+  application:
+    build: .
+    depends_on:
+      - mysqldb
+    environment:
+      - SPRING_MYSQLDB_HOST=mysqldb
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/test
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+
+  mysqldb:
+    image: mysql:8
+    environment:
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
