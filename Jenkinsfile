@@ -3,18 +3,28 @@ node {
     stage("Preparation"){
         git 'https://github.com/Rubru94/practTema15.git'
     }
-    stage("Create jar"){
-        sh "'${mvnHome}/bin/mvn' clean package -DskipTests"
+    stage("Create app"){
+        sh "docker-compose build"
     }
     stage("Start app"){
-        sh "cd ./target ; java -jar practTema15-0.1.0-SNAPSHOT.jar > out.log & echo \$! > pid"
+        sh "docker-compose up -d"
     }
     stage("Test"){
-        sh "'${mvnHome}/bin/mvn' test"
+        sh "sleep 10; '${mvnHome}/bin/mvn' test"
     }
     stage("Post"){
-        archiveArtifacts '**/target/*.jar'
+
+        sh "docker-compose logs"
+        sh "docker-compose logs > all-logs.txt"
+        archive "all-logs.txt"
+
+        sh "docker-compose logs application > application-logs.txt"
+        archive "application-logs.txt"
+
+        sh "docker-compose logs mysqldb > mysqldb-logs.txt"
+        archive "mysqldb-logs.txt"
+
+        sh "docker-compose down"
         junit '**/target/surefire-reports/*.xml'
-        sh "kill \$(cat ./target/pid)"
     }
 }
