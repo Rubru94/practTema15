@@ -8,7 +8,7 @@ COPY . /code/
 RUN mvn package -DskipTests=true -B
 
 FROM openjdk:8-jre
-COPY --from=builder /target/*.jar /usr/app/
+COPY --from=builder /code/target/*.jar /usr/app/
 WORKDIR /usr/app
 
 CMD ["java", "-jar", "practTema15-0.1.0-SNAPSHOT.jar"]
