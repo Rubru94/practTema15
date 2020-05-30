@@ -17,7 +17,7 @@ import io.restassured.RestAssured;
 import ruben.practTema15.Post;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ControllerTest {
+public class ControllerE2ETest {
 	
 	@Autowired
 	private ObjectMapper objectMapper;

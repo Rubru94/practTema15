@@ -22,7 +22,7 @@ import ruben.practTema15.Post;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ControllerTest {
+public class ControllerUnitTest {
 
 	@Autowired
 	private MockMvc mvc;
