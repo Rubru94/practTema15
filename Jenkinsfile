@@ -9,8 +9,11 @@ node {
     stage("Start app"){
         sh "docker-compose up -d"
     }
-    stage("Test"){
-        sh "sleep 10; mvn test"
+    stage("Unit Test"){
+        sh "sleep 5; mvn test -Dtest=ControllerUnitTest"
+    }
+    stage("E2E Test"){
+        sh "sleep 5; mvn test -Dtest=ControllerE2ETest"
     }
     stage("Post"){
 
