@@ -13,7 +13,7 @@ node {
         sh "sleep 5; mvn test -Dtest=ControllerUnitTest"
     }
     stage("E2E Test"){
-        sh "sleep 5; mvn test -Dtest=ControllerE2ETest"
+        sh "sleep 5;  mvn test -Dtest=ControllerIntegrationTest; mvn test -Dtest=ControllerE2ETest"
     }
     stage("Post"){
 
