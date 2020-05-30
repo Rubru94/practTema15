@@ -1,3 +1,3 @@
 # PRACT_TEMA_15
 
-Prepare Jenkins CI enviroment
+Prepare Jenkins CI enviroment 
