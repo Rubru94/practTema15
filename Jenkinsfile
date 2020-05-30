@@ -10,7 +10,7 @@ node {
         sh "docker-compose up -d"
     }
     stage("Test"){
-        sh "sleep 10; '${mvnHome}/bin/mvn' test"
+        sh "sleep 10; mvn test"
     }
     stage("Post"){
 
