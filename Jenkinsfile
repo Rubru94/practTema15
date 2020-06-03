@@ -27,7 +27,7 @@ node {
         sh "docker-compose logs mysqldb > mysqldb-logs.txt"
         archive "mysqldb-logs.txt"
 
-        archive "**/target/*.jar"
+        archiveArtifacts "**/target/*.jar"
 
         sh "docker-compose down"
         junit '**/target/surefire-reports/*.xml'
