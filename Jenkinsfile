@@ -29,7 +29,7 @@ node {
 
         archiveArtifacts "**/target/*.jar"
 
-        sh "docker-compose down"
+        sh "sleep 5; docker-compose down"
         junit '**/target/surefire-reports/*.xml'
     }
 }
