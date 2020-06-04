@@ -16,13 +16,13 @@ node {
 
         sh "docker-compose logs"
         sh "docker-compose logs > all-logs.txt"
-        archive "all-logs.txt"
+        archiveArtifacts "all-logs.txt"
 
         sh "docker-compose logs application > application-logs.txt"
-        archive "application-logs.txt"
+        archiveArtifacts "application-logs.txt"
 
         sh "docker-compose logs mysqldb > mysqldb-logs.txt"
-        archive "mysqldb-logs.txt"
+        archiveArtifacts "mysqldb-logs.txt"
 
         sh "sleep 5; docker-compose down"
         junit '**/target/surefire-reports/*.xml'
