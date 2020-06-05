@@ -18,9 +18,14 @@ node {
         [
             [
                 $class: 'MavenPackage', 
-                mavenAssetList: [[classifier: '', 
-                extension: '', 
-                filePath: '**/target/*.jar']], 
+                mavenAssetList: 
+                    [
+                        [
+                            classifier: '', 
+                            extension: '', 
+                            filePath: '**/target/*.jar'
+                        ]
+                    ], 
                 mavenCoordinate: 
                     [
                         artifactId: 'practTema15', 
