@@ -1,4 +1,6 @@
 node {
+
+   def mvnHome = tool 'M3'
     
    stage ("Preparation") {
       git 'https://github.com/Rubru94/practTema15.git'
