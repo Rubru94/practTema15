@@ -36,9 +36,9 @@ node {
     }
 
     stage('Build image') {
-        sh "docker build -t rubru94/p1t15-application ."
+        sh "docker build -t rubru94/p1t15-application:latests ."
     }
-    
+
     stage('Push image') {
         sh "docker push rubru94/p1t15-application"
     } 
