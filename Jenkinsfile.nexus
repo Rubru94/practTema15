@@ -23,7 +23,7 @@ node {
                         artifactId: 'practTema15', 
                         groupId: 'ruben', 
                         packaging: 'jar', 
-                        version: ${versionPkgRelease}
+                        version: '${versionPkgRelease}'
                     ]
             ]
         ]
