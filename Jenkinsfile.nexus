@@ -25,7 +25,7 @@ node {
                         [
                             classifier: '', 
                             extension: '', 
-                            filePath: '/target/*.jar'
+                            filePath: 'target/practTema15-0.1.0-SNAPSHOT.jar'
                         ]
                     ], 
                 mavenCoordinate: 
