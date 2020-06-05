@@ -4,15 +4,19 @@ node {
     stage("Preparation"){
         git 'https://github.com/Rubru94/practTema15.git'
     }
+
     stage("Create app"){
         sh "docker-compose build"
     }
+
     stage("Start app"){
         sh "docker-compose up -d"
     }
+
     stage("Unit Test"){
         sh "sleep 5; mvn test -Dtest=ControllerUnitTest"
     }
+
     stage("Post"){
 
         sh "docker-compose logs"
@@ -30,9 +34,11 @@ node {
         sh "sleep 5; docker-compose down"
         junit '**/target/surefire-reports/*.xml'
     }
+
     stage('Build image') {
         sh "docker build -t rubru94/p1t15-application ."
     }
+    
     stage('Push image') {
         sh "docker push rubru94/p1t15-application"
     } 
