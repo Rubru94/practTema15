@@ -1,0 +1,32 @@
+node {
+    
+   stage ("Preparation") {
+      git 'https://github.com/Rubru94/practTema15.git'
+   }
+
+   stage("Create app"){
+        sh "docker-compose build"
+   }
+
+   stage("Publish Release") {
+     nexusPublisher nexusInstanceId: 'localNexus', 
+     nexusRepositoryId: 'mvn-releases', 
+     packages: 
+        [
+            [
+                $class: 'MavenPackage', 
+                mavenAssetList: [[classifier: '', 
+                extension: '', 
+                filePath: '**/target/*.jar']], 
+                mavenCoordinate: 
+                    [
+                        artifactId: 'practTema15', 
+                        groupId: 'ruben', 
+                        packaging: 'jar', 
+                        version: ${versionPkgRelease}
+                    ]
+            ]
+        ]
+   }
+
+}
