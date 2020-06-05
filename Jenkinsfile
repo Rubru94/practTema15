@@ -34,12 +34,4 @@ node {
         sh "sleep 5; docker-compose down"
         junit '**/target/surefire-reports/*.xml'
     }
-
-    stage('Build image') {
-        sh "docker build -t rubru94/p1t15-application:latest ."
-    }
-
-    stage('Push image') {
-        sh "docker push rubru94/p1t15-application"
-    } 
 }
