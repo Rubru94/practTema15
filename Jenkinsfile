@@ -29,9 +29,15 @@ node {
         sh "docker-compose logs mysqldb > mysqldb-logs.txt"
         archiveArtifacts "mysqldb-logs.txt"
 
-        archiveArtifacts "**/target/*.jar"
-
         sh "sleep 5; docker-compose down"
         junit '**/target/surefire-reports/*.xml'
+    }
+
+    stage("Create jar"){
+        sh "'${mvnHome}/bin/mvn' clean package -DskipTests"
+    }
+
+    stage("Archive jar"){
+        archiveArtifacts "**/target/*.jar"
     }
 }
