@@ -4,8 +4,11 @@ node {
       git 'https://github.com/Rubru94/practTema15.git'
    }
 
-   stage("Create app"){
-        sh "docker-compose build"
+   stage ("Build Java") {
+
+      docker.image('maven').inside('-v $HOME/.m2:/root/.m2') {
+        sh "'${mvnHome}/bin/mvn' clean package -DskipTests"
+      }
    }
 
    stage("Publish Release") {
