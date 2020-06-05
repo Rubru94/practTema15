@@ -1,5 +1,6 @@
 node {
     def mvnHome = tool 'M3'
+
     stage("Preparation"){
         git 'https://github.com/Rubru94/practTema15.git'
     }
@@ -29,4 +30,10 @@ node {
         sh "sleep 5; docker-compose down"
         junit '**/target/surefire-reports/*.xml'
     }
+    stage('Build image') {
+        sh "docker build -t rubru94/p1t15-application ."
+    }
+    stage('Push image') {
+        sh "docker push rubru94/p1t15-application"
+    } 
 }
