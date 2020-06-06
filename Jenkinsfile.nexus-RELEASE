@@ -33,7 +33,7 @@ node {
                         [
                             classifier: '', 
                             extension: '', 
-                            filePath: 'target/practTema15-${pomVersion}.jar'
+                            filePath: "target/practTema15-'${pomVersion}'.jar"
                         ]
                     ], 
                 mavenCoordinate: 
