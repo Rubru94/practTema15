@@ -14,10 +14,7 @@ node {
    }
 
    stage ("Obtain pom version"){
-
-       pom = readMavenPom file: 'pom.xml'
-       pomVersion = pom.version
-       sh "echo ${pomVersion}"
+       sh "echo ${env.POM_VERSION}"
    }
 
    stage("Publish Release") {
