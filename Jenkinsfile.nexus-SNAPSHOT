@@ -5,12 +5,12 @@ node {
    stage ("Preparation") {
       git 'https://github.com/Rubru94/practTema15.git'
    }
-
+/*
    stage ('Tag repository') {
       sh "chmod +x -R ./changeTag.sh"
       sh "./changeTag.sh ${TAG} pom.xml"
    }
-
+*/
    stage ("Build Java") {
 
       docker.image('maven').inside('-v $HOME/.m2:/root/.m2') {
