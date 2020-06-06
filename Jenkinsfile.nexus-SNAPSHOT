@@ -24,9 +24,10 @@ node {
        */
        pom = readMavenPom file: 'pom.xml'
        pomVersion = pom.version
+       sh "echo ${pomVersion}"
    }
 
-   stage ("Publish Release") {
+   stage ("Publish SNAPSHOT") {
      nexusPublisher nexusInstanceId: 'localNexus', 
      nexusRepositoryId: 'mvn-snapshots', 
      packages: 
