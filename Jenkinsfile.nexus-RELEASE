@@ -14,7 +14,11 @@ node {
    }
 
    stage ("Obtain pom version"){
-       sh "echo ${env.POM_VERSION}"
+       /*
+       * readMavenPom require Pipeline Utility Steps plugin
+       */
+       pom = readMavenPom file: 'pom.xml'
+       pomVersion = pom.version
    }
 
    stage("Publish Release") {
