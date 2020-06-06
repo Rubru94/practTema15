@@ -17,7 +17,7 @@ node {
 
    stage ("Publish Release") {
      nexusPublisher nexusInstanceId: 'localNexus', 
-     nexusRepositoryId: 'mvn-releases', 
+     nexusRepositoryId: 'mvn-snapshots', 
      packages: 
         [
             [
