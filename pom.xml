@@ -18,6 +18,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
+		<sonar.projectKey>Rubru94_practTema15</sonar.projectKey>
+		<sonar.organization>rubru94</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.login>fb64cc551c61aed8f5bf6c1eb8794d4105dfd918</sonar.login>
 	</properties>
 
 	<dependencies>
