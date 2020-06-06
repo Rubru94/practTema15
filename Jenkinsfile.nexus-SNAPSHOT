@@ -1,11 +1,11 @@
 node {
-    
+
    stage ("Preparation") {
       git 'https://github.com/Rubru94/practTema15.git'
    }
 
    stage ('Tag repository') {
-      sh './changeTag.sh ${TAG} pom.xml'
+      sh "./changeTag.sh ${TAG} pom.xml"
    }
 
    stage ("Build Java") {
@@ -15,7 +15,7 @@ node {
       }
    }
 
-   stage("Publish Release") {
+   stage ("Publish Release") {
      nexusPublisher nexusInstanceId: 'localNexus', 
      nexusRepositoryId: 'mvn-releases', 
      packages: 
@@ -35,7 +35,7 @@ node {
                         artifactId: 'practTema15', 
                         groupId: 'ruben', 
                         packaging: 'jar', 
-                        version: '${versionPkgRelease}'
+                        version: '${TAG}'
                     ]
             ]
         ]
