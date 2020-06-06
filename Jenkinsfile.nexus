@@ -4,6 +4,10 @@ node {
       git 'https://github.com/Rubru94/practTema15.git'
    }
 
+   stage ('Tag repository') {
+      sh './changeTag.sh ${TAG} pom.xml'
+   }
+
    stage ("Build Java") {
 
       docker.image('maven').inside('-v $HOME/.m2:/root/.m2') {
@@ -23,7 +27,7 @@ node {
                         [
                             classifier: '', 
                             extension: '', 
-                            filePath: 'target/practTema15-0.1.0-SNAPSHOT.jar'
+                            filePath: 'target/practTema15-${TAG}.jar'
                         ]
                     ], 
                 mavenCoordinate: 
