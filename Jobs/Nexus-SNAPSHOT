@@ -27,7 +27,7 @@ node {
        sh "echo ${pomVersion}"
    }
 
-   stage ("Publish SNAPSHOT") {
+   stage ("Publish SNAPSHOT on Nexus") {
      nexusPublisher nexusInstanceId: 'localNexus', 
      nexusRepositoryId: 'mvn-snapshots', 
      packages: 
