@@ -1,5 +1,5 @@
 #!/bin/sh 
-$1 = \$(mvn -q \
+$1 = $(mvn -q \
         -Dexec.executable="echo" \
         -Dexec.args='${project.version}' \
         --non-recursive \
