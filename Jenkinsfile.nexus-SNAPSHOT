@@ -4,7 +4,7 @@ node {
       git 'https://github.com/Rubru94/practTema15.git'
    }
 
-    stage ('Tag repository') {
+   stage ('Tag repository') {
       sh './changeTag.sh ${TAG} pom.xml'
    }
 
