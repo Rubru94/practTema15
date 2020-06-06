@@ -21,7 +21,7 @@ node {
        pomVersion = pom.version
    }
 
-   stage("Publish Release") {
+   stage("Publish Release on Nexus") {
      nexusPublisher nexusInstanceId: 'localNexus', 
      nexusRepositoryId: 'mvn-releases', 
      packages: 
