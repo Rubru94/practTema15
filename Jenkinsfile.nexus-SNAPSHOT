@@ -1,5 +1,7 @@
 node {
 
+   def pomVersion
+
    stage ("Preparation") {
       git 'https://github.com/Rubru94/practTema15.git'
    }
@@ -16,6 +18,14 @@ node {
       }
    }
 
+   stage ("Obtain pom version"){
+       /*
+       * readMavenPom require Pipeline Utility Steps plugin
+       */
+       pom = readMavenPom file: 'pom.xml'
+       pomVersion = pom.version
+   }
+
    stage ("Publish Release") {
      nexusPublisher nexusInstanceId: 'localNexus', 
      nexusRepositoryId: 'mvn-snapshots', 
@@ -28,7 +38,7 @@ node {
                         [
                             classifier: '', 
                             extension: '', 
-                            filePath: 'target/practTema15-${TAG}.jar'
+                            filePath: "target/practTema15-${pomVersion}.jar"
                         ]
                     ], 
                 mavenCoordinate: 
