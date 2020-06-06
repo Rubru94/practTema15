@@ -5,7 +5,7 @@ node {
    }
 
    stage ('Tag repository') {
-      sh "chmod +x -R ${env.WORKSPACE}"
+      sh "chmod +x -R ./changeTag.sh"
       sh "./changeTag.sh ${TAG} pom.xml"
    }
 
