@@ -29,7 +29,7 @@ node {
 
    stage ("Publish SNAPSHOT") {
      nexusPublisher nexusInstanceId: 'localNexus', 
-     nexusRepositoryId: 'maven-snapshots', 
+     nexusRepositoryId: 'mvn-snapshots', 
      packages: 
         [
             [
