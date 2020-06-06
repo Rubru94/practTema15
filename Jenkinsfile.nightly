@@ -31,6 +31,10 @@ node {
         }
     }
 */
+
+    stage("Sonarqube") {
+        sh "mvn verify sonar:sonar"
+    }
     stage("Post"){
 
         sh "docker-compose logs"
