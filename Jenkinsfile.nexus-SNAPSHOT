@@ -1,0 +1,44 @@
+node {
+    
+   stage ("Preparation") {
+      git 'https://github.com/Rubru94/practTema15.git'
+   }
+
+    stage ('Tag repository') {
+      sh './changeTag.sh ${TAG} pom.xml'
+   }
+
+   stage ("Build Java") {
+
+      docker.image('maven').inside('-v $HOME/.m2:/root/.m2') {
+        sh "mvn clean package -DskipTests"
+      }
+   }
+
+   stage("Publish Release") {
+     nexusPublisher nexusInstanceId: 'localNexus', 
+     nexusRepositoryId: 'mvn-releases', 
+     packages: 
+        [
+            [
+                $class: 'MavenPackage', 
+                mavenAssetList: 
+                    [
+                        [
+                            classifier: '', 
+                            extension: '', 
+                            filePath: 'target/practTema15-${TAG}.jar'
+                        ]
+                    ], 
+                mavenCoordinate: 
+                    [
+                        artifactId: 'practTema15', 
+                        groupId: 'ruben', 
+                        packaging: 'jar', 
+                        version: '${versionPkgRelease}'
+                    ]
+            ]
+        ]
+   }
+
+}
